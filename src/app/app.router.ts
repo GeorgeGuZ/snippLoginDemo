@@ -10,9 +10,9 @@ const AppRoute: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AccountAuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'pageNotFound', component: PageNotFoundComponent}
-  // {path: '', redirectTo: 'login', pathMatch: "full"}
-  // {path: '**', component: PageNotFoundComponent}
+  {path: 'pageNotFound', component: PageNotFoundComponent},
+  {path: '', redirectTo: 'login', pathMatch: "full"},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 export const Routing: ModuleWithProviders = RouterModule.forRoot(AppRoute);

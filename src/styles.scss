@@ -4,3 +4,22 @@ body, html {
   background-repeat: no-repeat;
   background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
 }
+
+#snipp-spinner{
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  div {
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    top: 30%;
+    color: #fff;
+    .sk-circle::before {
+      background: #fff;
+    }
+  }
+}

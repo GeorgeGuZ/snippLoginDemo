@@ -19,7 +19,8 @@
       "prefix": "snipp",
       "styles": [
         "styles.scss",
-        "../node_modules/bootstrap/dist/css/bootstrap.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../node_modules/spinkit/scss/spinners/10-fading-circle.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js"

@@ -5,8 +5,6 @@ import * as firebase from "firebase";
 @Injectable()
 export class AccountAuthGuard implements CanActivate {
 
-    constructor() {}
-
     canActivate() {
         var user = firebase.auth().currentUser;
         return !!user;
