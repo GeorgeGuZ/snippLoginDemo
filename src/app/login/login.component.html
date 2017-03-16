@@ -1,0 +1,36 @@
+<div class="card card-container">
+    <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+    <img id="profile-img" class="profile-img-card" src="assets/images/avatar_2x.png"/>
+    <p id="profile-name" class="profile-name-card"></p>
+    <form class="form-signin" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" autofocus
+               formControlName="email">
+        <span class="error-message">Invalid email</span>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+               formControlName="password">
+        <div id="remember" class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" [disabled]="loginForm.invalid">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block btn-signin" (click)="onRegister()">Register</button>
+    </form><!-- /form -->
+    <a href="#" class="forgot-password">
+        Forgot the password?
+    </a>
+</div>
+
+
+<modal #loginModal [backdrop]="false">
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">{{modalHeader}}</h4>
+    </modal-header>
+    <modal-body>
+        {{modalBody}}
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>
+    </modal-footer>
+</modal>
