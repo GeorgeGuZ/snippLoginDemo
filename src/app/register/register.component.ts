@@ -21,6 +21,23 @@ export class RegisterComponent implements OnInit {
         header: '',
         body: ''
     };
+    provinces = [
+        {label: 'Ontario', value: 'ON'},
+        {label: 'Quebec', value: 'QC'},
+        {label: 'Nova Scotia', value: 'NS'},
+        {label: 'New Brunswick', value: 'NB'},
+        {label: 'Manitoba', value: 'MB'},
+        {label: 'British Columbia', value: 'BC'},
+        {label: 'Prince Edward Island', value: 'PE'},
+        {label: 'Saskatchewan', value: 'SK'},
+        {label: 'Alberta', value: 'AB'},
+        {label: 'Newfoundland and Labrador', value: 'NL'}
+    ];
+    genders = [
+        {label: 'Male', value: 'MALE'},
+        {label: 'Female', value: 'FEMALE'},
+        {label: 'Other', value: 'OTHER'},
+    ];
 
     constructor(private router: Router, private fb: FormBuilder, private ds: DataService) {
     }

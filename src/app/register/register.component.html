@@ -66,12 +66,13 @@
 
         <div class="input-line-wrapper">
             <div class="input-container">
-                <input type="text"
-                       id="registerState"
-                       class="form-control"
-                       placeholder="Choose state"
-                       autofocus
-                       formControlName="state">
+                <select id="registerState"
+                        class="form-control"
+                        autofocus
+                        formControlName="state">
+                    <option value="" disabled selected>Choose province</option>
+                    <option *ngFor="let province of provinces" value="{{province.value}}">{{province.label}}</option>
+                </select>
             </div>
             <div class="input-container">
                 <input type="text"
@@ -86,15 +87,13 @@
 
         <div class="input-line-wrapper">
             <div class="input-container">
-                <select type="text"
-                        id="registerGender"
+                <select id="registerGender"
                         class="form-control"
                         placeholder="Choose gender"
                         autofocus
                         formControlName="gender">
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
+                    <option value="" disabled selected>Gender</option>
+                    <option *ngFor="let gender of genders" value="{{gender.value}}">{{gender.label}}</option>
                 </select>
             </div>
             <div class="input-container">
