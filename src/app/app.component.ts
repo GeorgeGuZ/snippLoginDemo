@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-declare var $;
+import {SpinnerService} from './services/spinner.service';
 
 @Component({
   selector: 'snipp-root',
@@ -7,7 +7,12 @@ declare var $;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
+
+  constructor (private ss: SpinnerService) {
+
+  }
+
   ngOnInit () {
-    $('#snipp-spinner').hide();
+    this.ss.hide();
   }
 }

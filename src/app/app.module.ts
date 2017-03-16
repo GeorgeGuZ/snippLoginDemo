@@ -14,6 +14,7 @@ import {AccountAuthGuard} from "./home/home.guard";
 
 import {Ng2DatetimePickerModule} from 'ng2-datetime-picker';
 import {DataService} from "./services/data.service";
+import {SpinnerService} from "./services/spinner.service";
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import {DataService} from "./services/data.service";
     ],
     providers: [
         AccountAuthGuard,
-        DataService
+        DataService,
+        SpinnerService
     ],
     bootstrap: [AppComponent]
 })

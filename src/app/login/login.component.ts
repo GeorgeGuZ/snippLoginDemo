@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import * as firebase from "firebase";
 import {ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
 import {DataService} from "../services/data.service";
-declare var $;
+import {SpinnerService} from "../services/spinner.service";
 
 @Component({
     selector: 'snipp-login',
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     modalHeader: string;
     modalBody: string;
 
-    constructor(private router: Router, private fb: FormBuilder, private ds: DataService) {
+    constructor(private router: Router, private fb: FormBuilder, private ds: DataService, private ss: SpinnerService) {
     }
 
     ngOnInit() {
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-        $('#snipp-spinner').show();
+        this.ss.show();
         firebase.auth().signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
             .catch((error: any) => {
                 var errorMsg;
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
                 }
             })
             .then(() => {
-                $('#snipp-spinner').hide();
+                this.ss.hide();
             });
     }
 
