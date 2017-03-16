@@ -1,38 +1,144 @@
 <div class="card card-container-register">
-  <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-  <img id="profile-img" class="profile-img-card" src="assets/images/avatar_2x.png" />
-  <p id="profile-name" class="profile-name-card"></p>
-  <form class="form-register" (ngSubmit)="onSubmit()" [formGroup]="registerForm">
-    <input type="text" id="registerFirstName" class="form-control" placeholder="First name" autofocus formControlName="firstName">
-    <input type="text" id="registerLastName" class="form-control" placeholder="Last name" autofocus formControlName="lastName">
-    <input type="email" id="registerEmail" class="form-control" placeholder="Email" autofocus formControlName="email">
-    <span class="error-message">Invalid email</span>
-    <input type="text" id="registerAddress1" class="form-control" placeholder="Address line 1" autofocus formControlName="address1">
-    <input type="text" id="registerAddress2" class="form-control" placeholder="Address line 2" autofocus formControlName="address2">
-    <input type="text" id="registerCity" class="form-control" placeholder="City" autofocus formControlName="city">
-    <input type="text" id="registerState" class="form-control" placeholder="Choose state" autofocus formControlName="state">
-    <input type="text" id="registerZip" class="form-control" placeholder="Zip" autofocus formControlName="zip">
-    <input type="text" id="registerGender" class="form-control" placeholder="Choose gender" autofocus formControlName="gender">
-    <div class="dob-date-picker">
-      <input type="text" id="registerDob" class="form-control dob-input" placeholder="Date of birth" autofocus formControlName="dob" ng2-datetime-picker
-             date-only="true">
-    </div>
-    <input type="password" id="registerPassword" class="form-control" placeholder="Password" autofocus formControlName="password">
-    <input type="password" id="registerConfirmPassword" class="form-control" placeholder="Confirm password" autofocus formControlName="confirmPassword">
-    <button class="btn btn-lg btn-primary btn-block btn-register" type="submit" [disabled]="registerForm.invalid">Register</button>
-    <button class="btn btn-lg btn-primary btn-block btn-signin" (click)="onLogin()">Sign in</button>
-  </form>
+    <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+    <img id="profile-img" class="profile-img-card" src="assets/images/avatar_2x.png"/>
+    <p id="profile-name" class="profile-name-card"></p>
+    <form class="form-register" (ngSubmit)="onSubmit()" [formGroup]="registerForm" autocomplete="off">
+
+        <div class="input-line-wrapper">
+            <div class="input-container">
+                <input type="text"
+                       id="registerFirstName"
+                       class="form-control"
+                       placeholder="First name"
+                       autofocus
+                       formControlName="firstName">
+            </div>
+            <div class="input-container">
+                <input type="text"
+                       id="registerLastName"
+                       class="form-control"
+                       placeholder="Last name"
+                       autofocus
+                       formControlName="lastName">
+            </div>
+        </div>
+
+        <div class="input-line-wrapper">
+            <div class="input-container">
+                <input type="email"
+                       id="registerEmail"
+                       class="form-control"
+                       placeholder="Email"
+                       autofocus
+                       formControlName="email">
+                <span class="error-message">
+                Invalid email
+            </span>
+            </div>
+            <div class="input-container">
+                <input type="text"
+                       id="registerAddress1"
+                       class="form-control"
+                       placeholder="Address line 1"
+                       autofocus
+                       formControlName="address1">
+            </div>
+        </div>
+
+        <div class="input-line-wrapper">
+            <div class="input-container">
+                <input type="text"
+                       id="registerAddress2"
+                       class="form-control"
+                       placeholder="Address line 2"
+                       autofocus
+                       formControlName="address2">
+            </div>
+            <div class="input-container">
+                <input type="text"
+                       id="registerCity"
+                       class="form-control"
+                       placeholder="City"
+                       autofocus
+                       formControlName="city">
+            </div>
+        </div>
+
+        <div class="input-line-wrapper">
+            <div class="input-container">
+                <input type="text"
+                       id="registerState"
+                       class="form-control"
+                       placeholder="Choose state"
+                       autofocus
+                       formControlName="state">
+            </div>
+            <div class="input-container">
+                <input type="text"
+                       id="registerZip"
+                       class="form-control"
+                       placeholder="Zip example: A0A 1B1"
+                       autofocus
+                       formControlName="zip">
+                <span class="error-message">Invalid zip code</span>
+            </div>
+        </div>
+
+        <div class="input-line-wrapper">
+            <div class="input-container">
+                <select type="text"
+                        id="registerGender"
+                        class="form-control"
+                        placeholder="Choose gender"
+                        autofocus
+                        formControlName="gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <input type="text" id="registerDob" class="form-control dob-input" placeholder="Date of birth" autofocus
+                       formControlName="dob" ng2-datetime-picker
+                       date-only="true">
+            </div>
+        </div>
+
+        <div class="input-line-wrapper">
+            <div class="input-container">
+                <input type="password"
+                       id="registerPassword"
+                       class="form-control"
+                       placeholder="Password"
+                       autofocus
+                       formControlName="password">
+            </div>
+            <div class="input-container">
+                <input type="password"
+                       id="registerConfirmPassword"
+                       class="form-control"
+                       placeholder="Confirm password"
+                       autofocus
+                       formControlName="confirmPassword">
+            </div>
+
+        </div>
+        <button class="btn btn-lg btn-primary btn-block btn-register" type="submit" [disabled]="registerForm.invalid">
+            Register
+        </button>
+        <button class="btn btn-lg btn-primary btn-block btn-signin" (click)="onLogin()">Sign in</button>
+    </form>
 </div>
 
 <modal #myModal [backdrop]="false">
-  <modal-header [show-close]="true">
-    <h4 class="modal-title">{{modalHeader}}</h4>
-  </modal-header>
-  <modal-body>
-    {{modalBody}}
-  </modal-body>
-  <modal-footer>
-    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
-    <button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>
-  </modal-footer>
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">{{modalConfig.header}}</h4>
+    </modal-header>
+    <modal-body>
+        {{modalConfig.body}}
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>
+    </modal-footer>
 </modal>

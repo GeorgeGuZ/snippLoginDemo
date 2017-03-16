@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Database = firebase.database.Database;
 import {Http} from "@angular/http";
+import * as firebase from "firebase";
 
 @Injectable()
 export class DataService {

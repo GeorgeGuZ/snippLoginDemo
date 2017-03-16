@@ -17,6 +17,10 @@ export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     modalHeader: string;
     modalBody: string;
+    modalConfig = {
+        header: '',
+        body: ''
+    };
 
     constructor(private router: Router, private fb: FormBuilder, private ds: DataService) {
     }
@@ -34,7 +38,7 @@ export class RegisterComponent implements OnInit {
             address2: [''],
             city: [''],
             state: [''],
-            zip: [''],
+            zip: ['', [Validators.required]],
             gender: [''],
             dob: [''],
             password: ['', Validators.required],
@@ -50,15 +54,15 @@ export class RegisterComponent implements OnInit {
 
         firebase.auth().createUserWithEmailAndPassword(this.registerForm.value.email, this.registerForm.value.password)
             .catch((error:any) => {
-                this.modalHeader = "Register Error";
-                this.modalBody = error.code;
+                this.modalConfig.header = "Register Error";
+                this.modalConfig.body = error.code;
                 this.modal.open();
                 return false;
             })
             .then((data) => {
                 this.ds.writeUserData(this.registerForm.value, data.uid).then(()=>{
-                    this.modalHeader = "Register Success";
-                    this.modalBody = "Register successfully!";
+                    this.modalConfig.header = "Register Success";
+                    this.modalConfig.body = "Register successfully!";
                     this.modal.open();
                 });
             });
