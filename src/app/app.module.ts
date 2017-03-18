@@ -16,6 +16,9 @@ import {Ng2DatetimePickerModule} from 'ng2-datetime-picker';
 import {DataService} from "./services/data.service";
 import {SpinnerService} from "./services/spinner.service";
 
+import { NgReduxModule } from '@angular-redux/store';
+import { NgReduxRouterModule } from '@angular-redux/router';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -31,7 +34,9 @@ import {SpinnerService} from "./services/spinner.service";
         HttpModule,
         Routing,
         Ng2Bs3ModalModule,
-        Ng2DatetimePickerModule
+        Ng2DatetimePickerModule,
+        NgReduxModule,
+        NgReduxRouterModule
     ],
     providers: [
         AccountAuthGuard,

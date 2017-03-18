@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import * as firebase from "firebase";
 import {ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
 import {DataService} from "../services/data.service";
+import {SpinnerService} from "../services/spinner.service";
 
 @Component({
     selector: 'snipp-register',
@@ -39,7 +40,7 @@ export class RegisterComponent implements OnInit {
         {label: 'Other', value: 'OTHER'},
     ];
 
-    constructor(private router: Router, private fb: FormBuilder, private ds: DataService) {
+    constructor(private router: Router, private fb: FormBuilder, private ds: DataService, private ss: SpinnerService) {
     }
 
     ngOnInit() {
@@ -68,7 +69,7 @@ export class RegisterComponent implements OnInit {
     }
 
     onSubmit() {
-
+        this.ss.show();
         firebase.auth().createUserWithEmailAndPassword(this.registerForm.value.email, this.registerForm.value.password)
             .catch((error:any) => {
                 this.modalConfig.header = "Register Error";
@@ -78,6 +79,7 @@ export class RegisterComponent implements OnInit {
             })
             .then((data) => {
                 this.ds.writeUserData(this.registerForm.value, data.uid).then(()=>{
+                    this.ss.hide();
                     this.modalConfig.header = "Register Success";
                     this.modalConfig.body = "Register successfully!";
                     this.modal.open();
