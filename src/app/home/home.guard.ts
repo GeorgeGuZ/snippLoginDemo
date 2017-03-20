@@ -10,11 +10,13 @@ export class AccountAuthGuard implements CanActivate {
     constructor (private cs: CookieService, private ds: DataService) {}
 
     canActivate() {
-        var user = this.cs.getObject('signedInUser');
+        let user = firebase.auth().currentUser;
         if (!user)
             return false;
         else {
-            this.ds.setUserInfo(user);
+            let userInfo = this.cs.getObject('signedInUser');
+            if (userInfo)
+                this.ds.setUserInfo(userInfo);
             return true;
         }
     }
