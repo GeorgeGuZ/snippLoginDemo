@@ -5,6 +5,7 @@ import * as firebase from "firebase";
 import {ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
 import {DataService} from "../services/data.service";
 import {SpinnerService} from "../services/spinner.service";
+import {CookieService} from "angular2-cookie/services/cookies.service";
 
 @Component({
     selector: 'snipp-login',
@@ -18,8 +19,11 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     modalHeader: string;
     modalBody: string;
-
-    constructor(private router: Router, private fb: FormBuilder, private ds: DataService, private ss: SpinnerService) {
+    constructor(private router: Router,
+                private fb: FormBuilder,
+                private ds: DataService,
+                private ss: SpinnerService,
+                private cs: CookieService) {
     }
 
     ngOnInit() {
@@ -29,7 +33,8 @@ export class LoginComponent implements OnInit {
     initForm() {
         this.loginForm = this.fb.group({
             email: ['', [Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]],
-            password: ['', Validators.required]
+            password: ['', Validators.required],
+            rememberMe: [true]
         })
     }
 
@@ -67,6 +72,10 @@ export class LoginComponent implements OnInit {
                 if (data) {
                     this.ds.readUserData(data.uid).then(
                         () => {
+                            if (this.loginForm.value.rememberMe) {
+                                let expires = new Date(new Date().getTime() + 3600*1000);
+                                this.cs.putObject('signedInUser', this.ds.getUserInfo(), {expires: expires});
+                            }
                             this.router.navigate(['/home']);
                         }
                     );

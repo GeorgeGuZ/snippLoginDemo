@@ -15,6 +15,7 @@ import {AccountAuthGuard} from "./home/home.guard";
 import {Ng2DatetimePickerModule} from 'ng2-datetime-picker';
 import {DataService} from "./services/data.service";
 import {SpinnerService} from "./services/spinner.service";
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import { NgReduxModule } from '@angular-redux/store';
 import { NgReduxRouterModule } from '@angular-redux/router';
@@ -41,7 +42,8 @@ import { NgReduxRouterModule } from '@angular-redux/router';
     providers: [
         AccountAuthGuard,
         DataService,
-        SpinnerService
+        SpinnerService,
+        CookieService
     ],
     bootstrap: [AppComponent]
 })

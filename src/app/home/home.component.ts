@@ -1,6 +1,7 @@
 import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {DataService} from "../services/data.service";
 import {Router} from "@angular/router";
+import {CookieService} from "angular2-cookie/services/cookies.service";
 
 @Component({
     selector: 'snipp-home',
@@ -22,8 +23,10 @@ export class HomeComponent implements OnInit {
         {key: 'state', label: 'Province'},
         {key: 'zip', label: 'Zip code'}
     ];
+    private cookie;
 
-    constructor(private ds: DataService, private router: Router) {
+    constructor(private ds: DataService, private router: Router, private cs: CookieService) {
+        this.cookie = cs.getObject('signedInUser');
     }
 
     ngOnInit() {
@@ -32,6 +35,7 @@ export class HomeComponent implements OnInit {
 
     onSignOut() {
         this.ds.signOut().then(()=>{
+            this.cs.remove('signedInUser');
             this.router.navigate(['/login']);
         })
     }

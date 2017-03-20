@@ -39,6 +39,10 @@ export class DataService {
         return this.userInfo;
     }
 
+    setUserInfo(user) {
+        this.userInfo = user;
+    }
+
     signOut() {
         return firebase.auth().signOut();
     }

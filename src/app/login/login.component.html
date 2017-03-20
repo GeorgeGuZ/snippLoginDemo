@@ -10,7 +10,7 @@
                formControlName="password">
         <div id="remember" class="checkbox">
             <label>
-                <input type="checkbox" value="remember-me"> Remember me
+                <input type="checkbox" value="remember-me" formControlName="rememberMe"> Remember me
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" [disabled]="loginForm.invalid">Sign in</button>
@@ -22,7 +22,7 @@
 </div>
 
 
-<modal #loginModal [backdrop]="false">
+<modal #loginModal [backdrop]="static">
     <modal-header [show-close]="true">
         <h4 class="modal-title">{{modalHeader}}</h4>
     </modal-header>
@@ -30,7 +30,6 @@
         {{modalBody}}
     </modal-body>
     <modal-footer>
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
         <button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>
     </modal-footer>
 </modal>
