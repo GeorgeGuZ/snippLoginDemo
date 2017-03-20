@@ -1,5 +1,6 @@
 import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {DataService} from "../services/data.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'snipp-home',
@@ -22,11 +23,17 @@ export class HomeComponent implements OnInit {
         {key: 'zip', label: 'Zip code'}
     ];
 
-    constructor(private ds: DataService) {
+    constructor(private ds: DataService, private router: Router) {
     }
 
     ngOnInit() {
         this.userInfo = this.ds.getUserInfo();
+    }
+
+    onSignOut() {
+        this.ds.signOut().then(()=>{
+            this.router.navigate(['/login']);
+        })
     }
 
 }

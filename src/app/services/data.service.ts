@@ -39,4 +39,8 @@ export class DataService {
         return this.userInfo;
     }
 
+    signOut() {
+        return firebase.auth().signOut();
+    }
+
 }

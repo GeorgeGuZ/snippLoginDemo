@@ -1,8 +1,21 @@
-<table class="table table-striped">
-    <tbody>
-    <tr *ngFor="let item of listOrder">
-        <td>{{item.label}}</td>
-        <td>{{userInfo[item.key]}}</td>
-    </tr>
-    </tbody>
-</table>
+<div class="home-container">
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td>
+                <h3>User Information</h3>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of listOrder">
+            <td>{{item.label}}</td>
+            <td>{{userInfo[item.key]}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="btn btn-primary" (click)="onSignOut()">Sign out</div>
+
+</div>
