@@ -27,7 +27,7 @@
   /* just in case there no content*/
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
-  margin-top: 50px;
+  margin-top: 20px;
   /* shadows and rounded borders */
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -96,11 +96,11 @@
   }
 
   .form-register {
+
     input[type=email],
     input[type=password],
     input[type=text],
     select{
-      width: 49%;
       display: inline-block;
       margin-bottom: 10px;
       z-index: 1;
@@ -201,11 +201,21 @@
   }
 
   .input-container {
-    width: 49%;
     display: inline-block;
     vertical-align: text-top;
     input, select {
       width: 100% !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .input-container {
+      width: 100%;
+    }
+  }
+  @media (min-width: 601px) {
+    .input-container {
+      width: 49%;
     }
   }
 
