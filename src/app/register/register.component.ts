@@ -48,6 +48,8 @@ export class RegisterComponent implements OnInit {
     }
 
     initRegisterForm() {
+        var regex = new RegExp(/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i);
+
         this.registerForm = this.fb.group({
             firstName: [''],
             email: ['', [Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]],
@@ -56,7 +58,7 @@ export class RegisterComponent implements OnInit {
             address2: [''],
             city: [''],
             state: [''],
-            zip: ['', [Validators.required]],
+            zip: ['', [Validators.required, Validators.pattern(regex)]],
             gender: [''],
             dob: [''],
             password: ['', Validators.required],

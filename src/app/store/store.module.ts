@@ -34,7 +34,7 @@ export class StoreModule {
         store.configureStore(
             rootReducer,
             {},
-            [ createLogger(), ...rootEpics.createEpics() ],
+            //[ createLogger(), ...rootEpics.createEpics() ],
             devTools.isEnabled() ? [ devTools.enhancer() ] : []);
 
         // Enable syncing of Angular router state with our Redux store.
